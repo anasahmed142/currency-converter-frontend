@@ -66,21 +66,7 @@ body {
   font-weight: 600 !important;
 }
 
-.mat-raised-button {
-  width: 100%;
-  background: linear-gradient(135deg, #6a1b9a, #8e24aa) !important;
-  color: #fff !important;
-  border-radius: 30px !important;
-  padding: 14px 28px !important;
-  font-weight: 600 !important;
-  transition: all 0.3s ease-in-out;
-}
 
-.mat-raised-button:hover {
-  background: linear-gradient(135deg, #8e24aa, #ab47bc) !important;
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
 
 .elegant-table {
   width: 100%;
