@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
 import { tap } from 'rxjs/operators';
-
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class CurrencyApi {
   private backendUrl = 'https://currency-converter-backend-cc3y.onrender.com/currency';
   private userIdKey = 'currency_converter_user_id';
-
+  historyUpdated$ = new Subject<void>();
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   getOrCreateUserId(): string | null {
@@ -41,6 +41,7 @@ export class CurrencyApi {
   }): Observable<any> {
     return this.http.post(`${this.backendUrl}/convert`, data).pipe(
       tap((response) => {
+        this.historyUpdated$.next();
       }),
     );
   }

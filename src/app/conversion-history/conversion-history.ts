@@ -22,16 +22,19 @@ export class ConversionHistory implements OnInit {
   dataSource: any[] = [];
   isLoading = false;
 
-  constructor(private currencyApiService: CurrencyApi) {}
+  constructor(private currencyApiService: CurrencyApi) { }
 
   ngOnInit(): void {
     this.getHistory();
+    this.currencyApiService.historyUpdated$.subscribe(() => {
+      this.getHistory();
+    });
   }
 
   getHistory(): void {
     this.isLoading = true;
     const userId = this.currencyApiService.getOrCreateUserId();
-    
+
     if (userId) {
       this.currencyApiService.getConversionHistory(userId).subscribe({
         next: (history) => {
