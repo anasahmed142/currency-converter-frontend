@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CurrencyApi {
-  private backendUrl = 'http://localhost:3000/currency';
+  private backendUrl = 'https://currency-converter-backend-cc3y.onrender.com/currency';
   private userIdKey = 'currency_converter_user_id';
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
