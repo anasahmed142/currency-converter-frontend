@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CurrencyConverter } from './currency-converter/currency-converter';
 import { ConversionHistory } from './conversion-history/conversion-history';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CurrencyConverter, ConversionHistory],
+  imports: [CommonModule, CurrencyConverter, ConversionHistory],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

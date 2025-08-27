@@ -27,7 +27,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './currency-converter.scss'
 })
 export class CurrencyConverter implements OnInit {
-   converterForm: FormGroup;
+  converterForm: FormGroup;
   currencies: string[] = [];
   convertedAmount: number | null = null;
   isLoading = false;
@@ -62,8 +62,12 @@ export class CurrencyConverter implements OnInit {
     if (this.converterForm.valid) {
       this.isLoading = true;
       const { fromCurrency, toCurrency, amount } = this.converterForm.value;
+      if (fromCurrency === toCurrency) {
+        this.convertedAmount = amount;
+        return;
+      }
       const userId = this.currencyApiService.getOrCreateUserId();
-      
+
       if (userId) {
         this.currencyApiService.convertCurrency({
           from: fromCurrency,

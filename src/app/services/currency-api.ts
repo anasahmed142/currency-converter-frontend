@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,10 @@ export class CurrencyApi {
   }
 
   getSupportedCurrencies(): Observable<any> {
-    return this.http.get(`${this.backendUrl}/list`);
+    return this.http.get(`${this.backendUrl}/list`).pipe(
+      tap((response) => {
+      }),
+    );
   }
 
   convertCurrency(data: {
@@ -35,10 +39,16 @@ export class CurrencyApi {
     amount: number;
     userId: string;
   }): Observable<any> {
-    return this.http.post(`${this.backendUrl}/convert`, data);
+    return this.http.post(`${this.backendUrl}/convert`, data).pipe(
+      tap((response) => {
+      }),
+    );
   }
 
   getConversionHistory(userId: string): Observable<any> {
-    return this.http.get(`${this.backendUrl}/history?userId=${userId}`);
+    return this.http.get(`${this.backendUrl}/history?userId=${userId}`).pipe(
+      tap((response) => {
+      }),
+    );
   }
 }

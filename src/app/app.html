@@ -172,13 +172,10 @@
     }
   }
 </style>
-<main>
-  <div class="p-4 bg-light min-vh-100">
-    <div class="container">
-      <app-currency-converter></app-currency-converter>
-      <hr class="my-5">
-      <app-conversion-history></app-conversion-history>
-    </div>
+<main class="d-flex flex-column p-4 min-vh-100 align-items-center">
+  <div class="container-fluid">
+    <app-currency-converter></app-currency-converter>
+    <hr class="my-5" />
+    <app-conversion-history></app-conversion-history>
   </div>
 </main>
-<router-outlet />
